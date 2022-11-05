@@ -37,7 +37,7 @@ class FirebaseCrud {
     return notesItemCollection.snapshots();
   }
 
-  static Future<Response> updateEmployee({
+  static Future<Response> updateMovie({
     required String titulo,
     required String protagonista,
     required String genero,

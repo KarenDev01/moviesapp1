@@ -53,14 +53,14 @@ class _ListPage extends State<ListPage> {
                   return Card(
                       child: Column(children: [
                     ListTile(
-                      title: Text(e["employee_name"]),
+                      title: Text(e["Titulo"]),
                       subtitle: Container(
                         child: (Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Position: " + e['position'],
+                            Text("Protagonista: " + e['protagonista'],
                                 style: const TextStyle(fontSize: 14)),
-                            Text("Contact Number: " + e['contact_no'],
+                            Text("Genero: " + e['genero'],
                                 style: const TextStyle(fontSize: 12)),
                           ],
                         )),
@@ -81,11 +81,11 @@ class _ListPage extends State<ListPage> {
                               context,
                               MaterialPageRoute<dynamic>(
                                 builder: (BuildContext context) => EditPage(
-                                  employee: Employee(
+                                  movie: Movie(
                                       uid: e.id,
-                                      employeename: e["employee_name"],
-                                      position: e["position"],
-                                      contactno: e["contact_no"]),
+                                      titulo: e["titulo"],
+                                      protagonista: e["protagonista"],
+                                      genero: e["genero"]),
                                 ),
                               ),
                               (route) =>
@@ -99,10 +99,10 @@ class _ListPage extends State<ListPage> {
                             primary: const Color.fromARGB(255, 143, 133, 226),
                             textStyle: const TextStyle(fontSize: 20),
                           ),
-                          child: const Text('Delete'),
+                          child: const Text('Eliminar'),
                           onPressed: () async {
                             var response =
-                                await FirebaseCrud.deleteEmployee(docId: e.id);
+                                await FirebaseCrud.deleteMovie(docId: e.id);
                             if (response.code != 200) {
                               showDialog(
                                   context: context,
