@@ -1,6 +1,8 @@
 import 'package:movieapp/pages/addpage.dart';
 import 'package:flutter/material.dart';
+import 'package:movieapp/services/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:movieapp/pages/my_Home_Page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,16 +11,17 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Movie app',
       debugShowCheckedModeBanner: false,
+      title: 'Movies APP',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        brightness: Brightness.dark,
-      ),
-      home: AddPage(),
+          scaffoldBackgroundColor: Colors.white, primaryColor: kPrimaryColor),
+      home: const MyHomePage(),
     );
   }
 }
