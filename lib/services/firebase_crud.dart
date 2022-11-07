@@ -33,7 +33,7 @@ class FirebaseCrud {
 
   static Stream<QuerySnapshot> readMovie() {
     CollectionReference notesItemCollection = _Collection;
-
+    print(notesItemCollection);
     return notesItemCollection.snapshots();
   }
 

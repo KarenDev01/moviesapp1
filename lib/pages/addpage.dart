@@ -115,7 +115,7 @@ class _AddPage extends State<AddPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Codigo'),
+        title: const Text('Movie app'),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Column(

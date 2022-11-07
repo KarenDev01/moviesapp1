@@ -15,7 +15,7 @@ class ListPage extends StatefulWidget {
 
 class _ListPage extends State<ListPage> {
   final Stream<QuerySnapshot> collectionReference = FirebaseCrud.readMovie();
-  //FirebaseFirestore.instance.collection('Employee').snapshots();
+  //FirebaseFirestore.instance.collection('Movie').snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,13 +53,15 @@ class _ListPage extends State<ListPage> {
                   return Card(
                       child: Column(children: [
                     ListTile(
-                      title: Text(e["Titulo"]),
+                      title: Text(e["titulo"]),
                       subtitle: Container(
                         child: (Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+                            // ignore: prefer_interpolation_to_compose_strings
                             Text("Protagonista: " + e['protagonista'],
                                 style: const TextStyle(fontSize: 14)),
+                            // ignore: prefer_interpolation_to_compose_strings
                             Text("Genero: " + e['genero'],
                                 style: const TextStyle(fontSize: 12)),
                           ],
