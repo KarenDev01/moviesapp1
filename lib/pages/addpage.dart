@@ -15,6 +15,10 @@ class _AddPage extends State<AddPage> {
   final _movie_titulo = TextEditingController();
   final _movie_protagonista = TextEditingController();
   final _movie_genero = TextEditingController();
+  final _movie_like = 0;
+  final _movie_love = 0;
+  final _movie_sad = 0;
+  final _movie_dislike = 0;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -67,7 +71,7 @@ class _AddPage extends State<AddPage> {
             MaterialPageRoute<dynamic>(
               builder: (BuildContext context) => ListPage(),
             ),
-            (route) => false, //To disable back feature set to false
+            (route) => true, //To disable back feature set to false
           );
         },
         child: const Text('Ver peliculas'));
@@ -84,7 +88,12 @@ class _AddPage extends State<AddPage> {
             var response = await FirebaseCrud.addMovie(
                 titulo: _movie_titulo.text,
                 protagonista: _movie_protagonista.text,
-                genero: _movie_genero.text);
+                genero: _movie_genero.text,
+                like: _movie_like,
+                love: _movie_love,
+                sad: _movie_sad,
+                dislike: _movie_dislike);
+
             if (response.code != 200) {
               showDialog(
                   context: context,

@@ -36,7 +36,7 @@ class _ListPage extends State<ListPage> {
                   builder: (BuildContext context) => AddPage(),
                 ),
                 (route) =>
-                    false, //if you want to disable back feature set to false
+                    true, //if you want to disable back feature set to false
               );
             },
           )
@@ -77,7 +77,7 @@ class _ListPage extends State<ListPage> {
                             primary: const Color.fromARGB(255, 143, 133, 226),
                             textStyle: const TextStyle(fontSize: 20),
                           ),
-                          child: const Text('Edit'),
+                          child: const Text('Editar'),
                           onPressed: () {
                             Navigator.pushAndRemoveUntil<dynamic>(
                               context,
@@ -91,7 +91,7 @@ class _ListPage extends State<ListPage> {
                                 ),
                               ),
                               (route) =>
-                                  false, //if you want to disable back feature set to false
+                                  true, //if you want to disable back feature set to false
                             );
                           },
                         ),

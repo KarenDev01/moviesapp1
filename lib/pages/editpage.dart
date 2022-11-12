@@ -94,7 +94,7 @@ class _EditPage extends State<EditPage> {
             MaterialPageRoute<dynamic>(
               builder: (BuildContext context) => ListPage(),
             ),
-            (route) => false, //if you want to disable back feature set to false
+            (route) => true, //if you want to disable back feature set to false
           );
         },
         child: const Text('Peliculas'));

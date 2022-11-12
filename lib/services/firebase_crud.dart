@@ -10,6 +10,10 @@ class FirebaseCrud {
     required String titulo,
     required String protagonista,
     required String genero,
+    required int like,
+    required int love,
+    required int sad,
+    required int dislike,
   }) async {
     Response response = Response();
     DocumentReference documentReferencer = _Collection.doc();

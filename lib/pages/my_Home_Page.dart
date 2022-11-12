@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:movieapp/pages/addpage.dart';
+import 'package:movieapp/pages/editpage.dart';
+import 'package:movieapp/pages/listpage.dart';
 import 'package:movieapp/services/constants.dart';
 import 'package:movieapp/pages/favorite.dart';
 import 'package:movieapp/pages/search_Page.dart';
@@ -20,7 +23,8 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _paginas = [
     Home(),
     SearchList(),
-    Favorite(),
+    //Favorite(),
+    AddPage(),
   ];
 
   @override
@@ -39,7 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
               iconData: Icons.search,
               title: "Buscar",
             ),
-            TabData(iconData: Icons.favorite, title: " Mis Reacciones")
+            //TabData(iconData: Icons.favorite, title: " Mis Reacciones")
+            TabData(iconData: Icons.add, title: "Peliculas"),
           ],
           onTabChangedListener: (position) {
             setState(() {
