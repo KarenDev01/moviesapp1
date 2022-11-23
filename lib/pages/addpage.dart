@@ -15,10 +15,7 @@ class _AddPage extends State<AddPage> {
   final _movie_titulo = TextEditingController();
   final _movie_protagonista = TextEditingController();
   final _movie_genero = TextEditingController();
-  final _movie_like = 0;
-  final _movie_love = 0;
-  final _movie_sad = 0;
-  final _movie_dislike = 0;
+  final _movie_img = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -64,6 +61,20 @@ class _AddPage extends State<AddPage> {
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
 
+    final imgField = TextFormField(
+        controller: _movie_img,
+        autofocus: false,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Este campo es obligatorio';
+          }
+        },
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Imagen",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+
     final viewListbutton = TextButton(
         onPressed: () {
           Navigator.pushAndRemoveUntil<dynamic>(
@@ -86,13 +97,15 @@ class _AddPage extends State<AddPage> {
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
             var response = await FirebaseCrud.addMovie(
-                titulo: _movie_titulo.text,
-                protagonista: _movie_protagonista.text,
-                genero: _movie_genero.text,
-                like: _movie_like,
-                love: _movie_love,
-                sad: _movie_sad,
-                dislike: _movie_dislike);
+              titulo: _movie_titulo.text,
+              protagonista: _movie_protagonista.text,
+              genero: _movie_genero.text,
+              img: _movie_img.text,
+              like: 0,
+              dislike: 0,
+              love: 0,
+              sad: 0,
+            );
 
             if (response.code != 200) {
               showDialog(
@@ -143,6 +156,8 @@ class _AddPage extends State<AddPage> {
                   positionField,
                   const SizedBox(height: 35.0),
                   contactField,
+                  const SizedBox(height: 35.0),
+                  imgField,
                   viewListbutton,
                   const SizedBox(height: 45.0),
                   SaveButon,

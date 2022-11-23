@@ -70,7 +70,8 @@ class _ButtomsState extends State<Buttoms> {
                 backgroundColor: Colors.white,
                 child: Container(
                   height: 40,
-                  child: Image.asset('assets/mal.jpeg'),
+                  child: Image.network(
+                      'https://cdn-icons-png.flaticon.com/512/4466/4466315.png'),
                 )),
           ]),
           SizedBox(height: 10),
@@ -142,7 +143,8 @@ class _ButtomsState extends State<Buttoms> {
                 children: <Widget>[
                   Container(
                     width: 40,
-                    child: Image.asset('assets/mal.jpeg'),
+                    child: Image.network(
+                        'https://cdn-icons-png.flaticon.com/512/4466/4466315.png'),
                   ),
                   Container(
                       width: MediaQuery.of(context).size.width * 0.5,

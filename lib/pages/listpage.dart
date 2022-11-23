@@ -15,6 +15,7 @@ class ListPage extends StatefulWidget {
 
 class _ListPage extends State<ListPage> {
   final Stream<QuerySnapshot> collectionReference = FirebaseCrud.readMovie();
+
   //FirebaseFirestore.instance.collection('Movie').snapshots();
   @override
   Widget build(BuildContext context) {

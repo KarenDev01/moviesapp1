@@ -10,6 +10,7 @@ class FirebaseCrud {
     required String titulo,
     required String protagonista,
     required String genero,
+    required String img,
     required int like,
     required int love,
     required int sad,
@@ -21,7 +22,12 @@ class FirebaseCrud {
     Map<String, dynamic> data = <String, dynamic>{
       "titulo": titulo,
       "protagonista": protagonista,
-      "genero": genero
+      "genero": genero,
+      "img": img,
+      "like": like,
+      "love": love,
+      "sad": sad,
+      "dislike": dislike,
     };
 
     var result = await documentReferencer.set(data).whenComplete(() {
@@ -45,6 +51,7 @@ class FirebaseCrud {
     required String titulo,
     required String protagonista,
     required String genero,
+    required String img,
     required String docId,
   }) async {
     Response response = Response();
@@ -53,7 +60,8 @@ class FirebaseCrud {
     Map<String, dynamic> data = <String, dynamic>{
       "titulo": titulo,
       "protagonista": protagonista,
-      "genero": genero
+      "genero": genero,
+      "img": img
     };
 
     await documentReferencer.update(data).whenComplete(() {

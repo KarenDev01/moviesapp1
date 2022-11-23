@@ -2,16 +2,19 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:movieapp/services/constants.dart';
 import 'package:movieapp/pages/context.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../services/firebase_crud.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  final List<Map<String, dynamic>> _allMoviesImg = [];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -57,7 +60,8 @@ class _HomeState extends State<Home> {
           margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
           child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(25.0)),
-            child: Image.asset("assets/matrix.jpg"),
+            child: Image.network(
+                "https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2019/03/hipertextual-20-anos-matrix-todo-que-nos-dejo-gran-pantalla-2019078274.jpg?fit=1200%2C800&quality=60&strip=all&ssl=1"),
           ),
         ),
       ),
@@ -141,14 +145,15 @@ final List<Map<String, dynamic>> _allMovies = [
     "name": "Sonyc 2 la pelicula",
     "age": 2022,
     "image":
-        'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQre31EeKplZHc5Mtfur-CgF_2bOq9fiHiFA0nY-mLG5BUellCi',
+        'https://es.web.img3.acsta.net/pictures/22/02/18/10/20/5195258.jpg',
     "genre": 'Aventura/Fantasia',
   },
   {
     "id": 2,
     "name": "Encanto",
     "age": 2021,
-    "image": 'https://pics.filmaffinity.com/Encanto-153413687-large.jpg',
+    "image":
+        'https://static.wikia.nocookie.net/disney/images/b/bc/Encanto_poster_2.JPG/revision/latest?cb=20211002154907&path-prefix=es',
     "genre": 'Musical/Infantil'
   },
   {

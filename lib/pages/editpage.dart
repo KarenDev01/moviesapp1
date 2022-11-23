@@ -19,6 +19,7 @@ class _EditPage extends State<EditPage> {
   final _movie_titulo = TextEditingController();
   final _movie_protagonista = TextEditingController();
   final _movie_genero = TextEditingController();
+  final _movie_img = TextEditingController();
   final _docid = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -33,6 +34,7 @@ class _EditPage extends State<EditPage> {
         TextEditingValue(text: widget.movie!.protagonista.toString());
     _movie_genero.value =
         TextEditingValue(text: widget.movie!.genero.toString());
+    _movie_img.value = TextEditingValue(text: widget.movie!.img.toString());
   }
 
   @override
@@ -86,6 +88,19 @@ class _EditPage extends State<EditPage> {
             hintText: "Genero",
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
+    final imgField = TextFormField(
+        controller: _movie_img,
+        autofocus: false,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Este campo es requerido';
+          }
+        },
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            hintText: "Imagen",
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))));
 
     final viewListbutton = TextButton(
         onPressed: () {
@@ -112,6 +127,7 @@ class _EditPage extends State<EditPage> {
                 titulo: _movie_titulo.text,
                 protagonista: _movie_protagonista.text,
                 genero: _movie_genero.text,
+                img: _movie_img.text,
                 docId: _docid.text);
             if (response.code != 200) {
               showDialog(
@@ -164,6 +180,8 @@ class _EditPage extends State<EditPage> {
                   positionField,
                   const SizedBox(height: 35.0),
                   contactField,
+                  const SizedBox(height: 35.0),
+                  imgField,
                   viewListbutton,
                   const SizedBox(height: 45.0),
                   SaveButon,
